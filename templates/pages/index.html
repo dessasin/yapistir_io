@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% load recaptcha %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans 'Yapıştırma Servisi - Yapıştır.io!' %}{% endblock %}
+{% block description %}Yapistir.io text ve kodlarınızı belirli bir süre için çevrimiçi olarak saklayabileceğiniz bir web
+    sitesidir.{% endblock description %}
+
+{% block seo %}
+    <script type="application/ld+json">
+            {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "https://yapistir.io",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://yapistir.io/Search?q={q}",
+                    "query-input": "required name=q"
+                }
+            }
+    </script>
+    <meta property='og:locale' content='tr_TR'/>
+    <meta property="og:site_name" content="Yapistir.io"/>
+    <meta property="fb:app_id" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://yapistir.io/"/>
+    <meta property="og:title" content="Yapistir.io"/>
+    <meta property="og:description"
+          content="Yapistir.io text ve kodlarınızı belirli bir süre için çevrimiçi olarak saklayabileceğiniz bir web sitesidir."/>
+    <meta name="twitter:site" content="@horusteknoloji"/>
+    <meta name="twitter:site:id" content=""/>
+    <meta name="twitter:creator" content="@horusteknoloji"/>
+    <meta name="twitter:creator:id" content=""/>
+    <meta name="twitter:url" content="https://yapistir.io/"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Yapistir.io"/>
+    <meta name="twitter:description"
+          content="Yapistir.io text ve kodlarınızı belirli bir süre için çevrimiçi olarak saklayabileceğiniz bir web sitesidir."/>
+{% endblock seo %}
+
+{% block js_header %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bulma-tagsinput.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/codemirror.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/codemirror.min.js"></script>
+    <style>
+        .CodeMirror {
+            border: 1px solid #ddd;
+        }
+    </style>
+{% endblock js_header %}
+
+{% block content %}
+    <form method="POST" action="." name="pasteform" novalidate>
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">İçerik</label>
+            <div class="control">
+                {{ form.content }}
+            </div>
+        </div>
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <label class="label">Başlık:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        {{ form.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <label class="label">Vurgulama:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        {{ form.lexer }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Silineceği Tarih:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            {{ form.expire }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label for="id_expire" class="label">Geçerlilik:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select name="expire" class="input" id="id_expire">
+                                                <option value="30d">Bir ay içinde yok et</option>
+                                                <option value="never" selected>Asla yok etme</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <label class="label">Listede Paylaş:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        {{ form.status }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Parola:</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="is-fullwidth">
+                                            {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                    {% endif %}
+
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <label class="label">Etiketler:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        <input class="input" name="tags" id="tags" type="tags"
+                                               placeholder="etiketler" data-tags-delimiters="enter,space,comma"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if not user.is_authenticated %}
+                        <div class="field">
+                            <div class="control">
+                                {% recaptcha %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-block is-info is-large is-fullwidth" type="submit" id="submit">
+                                <i class="far fa-save"></i> Kaydet
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <div class="column">
+                    <table class="table is-fullwidth">
+                        <thead>
+                        <tr>
+                            <th>Son Yayınlananlar</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for pub in publics %}
+                            <tr>
+                                <td> {% if pub.title %} <a href="{{ pub.slug }}">{{ pub.title }}</a> {% else %}
+                                    <a href="{{ pub.slug }}">Başlıksız</a> {% endif %} </td>
+                                <td>{{ pub.publish|timesince }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% for message in messages %}
+        <div class="container">
+            <div class="columns is-fullwidth">
+                <div class="column">
+                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                        <button class="delete"></button>
+                        {{ message|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% include "include/__errors.html" %}
+{% endblock %}
+
+{% block js_code %}
+    <script src="{% static "assets/js/bulma-tagsinput.min.js" %}"></script>
+    <script>
+        bulmaTagsinput.attach();
+    </script>
+
+    <script>
+        let editor = CodeMirror.fromTextArea(document.getElementById("id_content"), {
+            lineNumbers: true,
+            matchBrackets: true
+        });
+    </script>
+{% endblock js_code %}

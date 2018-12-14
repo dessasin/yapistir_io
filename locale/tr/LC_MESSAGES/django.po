@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-05 02:43+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\Paste\forms.py:16
+msgid "Bir saat içinde yok et"
+msgstr ""
+
+#: .\Paste\forms.py:17
+msgid "Bir hafta içinde yok et"
+msgstr ""
+
+#: .\Paste\forms.py:18
+msgid "Bir ay içinde yok et"
+msgstr ""
+
+#: .\Paste\forms.py:19
+msgid "Asla yok etme"
+msgstr ""
+
+#: .\Paste\forms.py:33
+msgid "Syntax"
+msgstr ""
+
+#: .\Paste\forms.py:40
+msgid "Süre"
+msgstr ""
+
+#: .\Paste\forms.py:45
+msgid "İçerik"
+msgstr ""
+
+#: .\Paste\forms.py:55
+msgid "Title"
+msgstr ""
+
+#: .\Paste\views.py:40
+msgid "Kayıt sırasında bir sorun oluştu"
+msgstr ""
+
+#: .\Paste\views.py:41
+msgid "İçerik Alanı Zorunludur."
+msgstr ""
+
+#: .\Paste\views.py:174
+msgid "Geçersiz Yetkilendirme Kodu"
+msgstr ""
+
+#: .\TPaste\settings.py:182
+msgid "Türkçe"
+msgstr ""
+
+#: .\TPaste\settings.py:183
+msgid "English"
+msgstr ""
+
+#: .\templates\404.html:4
+msgid "404 Sayfa Bulunamadı"
+msgstr ""
+
+#: .\templates\404.html:9
+msgid "Aradığın şey herneyse artık yok gibi duruyor."
+msgstr ""
+
+#: .\templates\500.html:4
+msgid "500 Bilinmeyen HATA"
+msgstr ""
+
+#: .\templates\500.html:9
+msgid "Bilinmeyen HATA"
+msgstr ""
+
+#: .\templates\base.html:59
+msgid ""
+"Bu internet sitesinde, kullanıcı deneyimini geliştirmek ve internet "
+"sitesinin verimli çalışmasını sağlamak amacıyla çerezler kullanılmaktadır."
+msgstr ""
+
+#: .\templates\base.html:60
+msgid "Tamam"
+msgstr ""
+
+#: .\templates\base.html:61
+msgid "Ayrıntıları inceleyin"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:6
+msgid "Kullanıcı:"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:6
+msgid "Anonim"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:9
+msgid "Ekleme Tarihi:"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:17
+msgid "Kopyala"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:28
+msgid "Yetkilendirme Kodu"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:31
+msgid "Sil"
+msgstr ""
+
+#: .\templates\include\__detail_func.html:37
+msgid "Txt Olarak Göster"
+msgstr ""
+
+#: .\templates\include\__footer.html:6
+msgid "Source code licensed"
+msgstr ""
+
+#: .\templates\include\__menu.html:22
+msgid "Ana Sayfa"
+msgstr ""
+
+#: .\templates\include\__menu.html:24 .\templates\include\__menu.html:29
+msgid "Hakkımızda"
+msgstr ""
+
+#: .\templates\include\__menu.html:26 .\templates\pages\disclaimer.html:10
+msgid "Sorumluluk Reddi"
+msgstr ""
+
+#: .\templates\include\__menu.html:27 .\templates\pages\privacy.html:10
+msgid "Gizlilik Politikası"
+msgstr ""
+
+#: .\templates\pages\about.html:4
+msgid "Yapıştır.io! - Hakkında"
+msgstr ""
+
+#: .\templates\pages\about.html:12
+msgid "Yapıştır.io Hakkında"
+msgstr ""
+
+#: .\templates\pages\about.html:13
+msgid ""
+"Yapıştırma servisimiz bir takım sürdürülebilirlik sorunlarından kurtulmak, "
+"kısıtlamaları ortadan kaldırmak ve can sıkıntımızı gidermek için "
+"geliştirilmiştir."
+msgstr ""
+
+#: .\templates\pages\about.html:14
+msgid "Alt Yapımız"
+msgstr ""
+
+#: .\templates\pages\about.html:15
+msgid "Uygulamamızı oluştururken kullandıklarımız"
+msgstr ""
+
+#: .\templates\pages\about.html:17
+msgid "Yazılım iskeleti:"
+msgstr ""
+
+#: .\templates\pages\about.html:18
+msgid "Programlama dili:"
+msgstr ""
+
+#: .\templates\pages\about.html:19
+msgid "Front-end:"
+msgstr ""
+
+#: .\templates\pages\about.html:20
+msgid "Editör:"
+msgstr ""
+
+#: .\templates\pages\about.html:21
+msgid "Fontlar:"
+msgstr ""
+
+#: .\templates\pages\about.html:22
+msgid "WSGI sunucusu:"
+msgstr ""
+
+#: .\templates\pages\about.html:23
+msgid "Web server:"
+msgstr ""
+
+#: .\templates\pages\about.html:24
+msgid "Veritabanı:"
+msgstr ""
+
+#: .\templates\pages\about.html:25
+msgid "İçerik ID:"
+msgstr ""
+
+#: .\templates\pages\about.html:26
+msgid "İşletim sistemi:"
+msgstr ""
+
+#: .\templates\pages\about.html:27
+msgid "Hata takip:"
+msgstr ""
+
+#: .\templates\pages\about.html:28
+msgid "Dil desteği:"
+msgstr ""
+
+#: .\templates\pages\about.html:29
+msgid "Sağlayıcı:"
+msgstr ""
+
+#: .\templates\pages\about.html:31
+msgid "Kaynak Kodlar:"
+msgstr ""
+
+#: .\templates\pages\about.html:33
+msgid "Güncellemeler:"
+msgstr ""
+
+#: .\templates\pages\about.html:33
+msgid "Değişiklik Günlüğü"
+msgstr ""
+
+#: .\templates\pages\about.html:37
+msgid "İstatistikler"
+msgstr ""
+
+#: .\templates\pages\about.html:38
+msgid "Adet içerik veritabanımızda bulunmaktadır."
+msgstr ""
+
+#: .\templates\pages\api.html:3
+msgid "Yapıştır.io! - API v1"
+msgstr ""
+
+#: .\templates\pages\api.html:10
+msgid "API Kullanımı"
+msgstr ""
+
+#: .\templates\pages\api.html:19
+msgid "Parametreler"
+msgstr ""
+
+#: .\templates\pages\disclaimer.html:6
+msgid "Sorumluluk Reddi - Yapistir.io"
+msgstr ""
+
+#: .\templates\pages\help.html:3
+msgid "Yapıştır.io! - Yardım"
+msgstr ""
+
+#: .\templates\pages\help.html:10
+msgid "Nasıl Kullanılır"
+msgstr ""
+
+#: .\templates\pages\help.html:13
+msgid "ccccc"
+msgstr ""
+
+#: .\templates\pages\help.html:17
+msgid "Gerekler"
+msgstr ""
+
+#: .\templates\pages\index.html:6
+msgid "Yapıştırma Servisi - Yapıştır.io!"
+msgstr ""
+
+#: .\templates\pages\index.html:45
+msgid "Kaydet"
+msgstr ""
+
+#: .\templates\pages\privacy.html:6
+msgid "Gizlilik Politikası - Yapistir.io"
+msgstr ""
+
+#: .\templates\pages\privacy.html:12
+msgid ""
+"Gizlilik Politikamız servisimizi kullanırken hangi verileri neden "
+"topladığımızı ve bu verilerle ne yaptığımızı anlamanıza yardımcı olmak için "
+"bir takım açıklamaları içermektedir. "
+msgstr ""
+
+#: .\templates\pages\privacy.html:14
+msgid "Çerez (“Cookie”) Nedir?"
+msgstr ""
+
+#: .\templates\pages\privacy.html:15
+msgid ""
+"Çerezler, ziyaret ettiğiniz internet siteleri tarafından tarayıcılar "
+"aracılığıyla cihazınıza veya ağ sunucusuna depolanan küçük metin "
+"dosyalarıdır. Çerezler, ziyaret ettiğiniz web sitesiyle ilişkili sunucular "
+"tarafından oluşturulurlar. Böylelikle ziyaretçi aynı siteyi ziyaret "
+"ettiğinde sunucu bunu anlayabilir."
+msgstr ""
+
+#: .\templates\pages\privacy.html:16
+msgid ""
+"Çerezler, ziyaretçilere ilişkin isim, cinsiyet veya adres gibi kişisel "
+"verileri içermezler. Daha detaylı bilgi için <a href='https://www."
+"aboutcookies.org/'>www.aboutcookies.org</a> web sitesini ziyaret "
+"edebilirsiniz."
+msgstr ""
+
+#: .\templates\pages\privacy.html:17
+msgid "Toplanan Bilgiler"
+msgstr ""
+
+#: .\templates\pages\privacy.html:19
+msgid "Tarayıcı Bilgileriniz"
+msgstr ""
+
+#: .\templates\pages\privacy.html:20
+msgid "IP Adresiniz"
+msgstr ""
+
+#: .\templates\pages\privacy.html:21
+msgid "Yönlendirilen URL Bilgisi"
+msgstr ""
+
+#: .\templates\pages\privacy.html:22
+msgid "Çerez Bilgisi"
+msgstr ""
+
+#: .\templates\pages\privacy.html:24
+msgid ""
+"Görüntülediğiniz sayfalar, tıkladığınız bağlantılar ve hizmetimiz ile ilgili "
+"yaptığınız diğer işlemler hakkında bilgi toplamak için reklam ve e-posta "
+"içeriğimiz ile, çerez, web işaretçileri (beacons), benzersiz kimlikleme ve "
+"benzer teknolojileri <b>Google Analytics</b> aracılığı ile kullanmaktayız."
+msgstr ""
+
+#: .\templates\pages\privacy.html:25
+msgid ""
+"Topladığımız bilgileri, hizmetimizi sunmak, sürdürmek, korumak ve "
+"iyileştirmek, yeni hizmetler geliştirmek ve hem kendimizi hem de "
+"kullanıcılarımızı korumak için kullanırız. Bu bilgileri ayrıca, daha uygun "
+"hizmet sağlamak ve akademik amaçlar için de kullanırız."
+msgstr ""
+
+#: .\templates\pages\privacy.html:30
+msgid "ÖNEMLİ"
+msgstr ""
+
+#: .\templates\pages\privacy.html:33
+msgid ""
+"Tüm değişiklikler burada bildirilecek ve aksi belirtilmedikçe burada "
+"bildirilen her türlü değişiklik yayınlandığı tarihten itibaren yürürlüğe "
+"girecektir."
+msgstr ""
+
+#: .\templates\pages\privacy.html:36
+msgid "<b>Tarih:</b> 1 Nisan 2018"
+msgstr ""

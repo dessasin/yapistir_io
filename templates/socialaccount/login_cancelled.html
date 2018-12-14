@@ -1,0 +1,22 @@
+{% extends "socialaccount/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Giriş İptal edildi" %}{% endblock %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <div class="box">
+                    <h3 class="title">{% trans "Giriş İptal edildi" %}</h3>
+                    {% url 'account_login' as login_url %}
+                    <p>{% trans "Sosyal ağ hesabınız üzerinden giriş yapmaya çalışırken bir hata oluştu." %}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>Mevcut hesaplarınızdan birini kullanarak sitemize giriş yapmayı iptal etmeye karar verdiniz. Bu bir hata olduysa,
+        lütfen <a href="{{ login_url }}"> giriş yapın </a>.</p>
+
+{% endblock %}

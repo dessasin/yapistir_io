@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %} {% trans 'Yapıştır.io! - API v1' %}{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-thirds">
+                    <h1 class="title">{% trans 'API Kullanımı' %}</h1>
+                    <h2 class="subtitle">
+                        <br>
+                        <p>{% trans 'Günümüzde pek çok yapıştırma çöplüğü olarak kullanılan yerler güvenlik sorunları ve bir takım
+                            teknik aksaklıklar ile boğuşuyordu. Bu gibi sorunları ortadan kaldırarak bir platform
+                            oluşturduk.' %} </p>
+                    </h2>
+                </div>
+                <div class="column">
+                    <h1 class="title">{% trans 'Parametreler' %}</h1>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

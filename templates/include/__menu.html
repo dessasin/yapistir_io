@@ -1,0 +1,72 @@
+{% load activeurl %}
+{% load i18n %}
+{% load static %}
+
+<nav class="navbar is-warning">
+    <div class="navbar-brand">
+        <a class="navbar-item logo" href="{% url 'paste_new' %}">
+            <img src="{% static 'images/logo.png' %}" alt="logo">
+        </a>
+        <div class="navbar-burger" data-target="navMenuColorlink-example">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="navbar-item">
+        <a class="button is-block is-success" href="{% url 'paste_new' %}">
+            <span class="icon tooltip is-tooltip-bottom" data-tooltip="Yeni içerik ekle">
+                <i class="fas fa-plus"></i>
+            </span>
+        </a>
+    </div>
+    <div class="navbar-item level-item">
+        <form action="{% url 'search' %} " method="GET" accept-charset="UTF-8">
+            <div class="field has-addons">
+                <div class="control has-icons-left has-icons-right is-expanded">
+                    <input type="text" class="input is-info" name="q" placeholder="Aranacak kelimeyi girin"
+                           minlength="3" required>
+                    <span class="icon is-left">
+          <i class="fas fa-pencil-alt"></i>
+        </span>
+                </div>
+                <p class="control">
+                    <button type="submit" class="button is-info tooltip is-tooltip-bottom" data-tooltip="Arama yap"><i
+                            class="fas fa-search"></i></button>
+                </p>
+            </div>
+        </form>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+        {% activeurl %}
+            <div class="navbar-end">
+                <a class="navbar-item" href="{% url 'paste_new' %}">{% trans "Ana Sayfa" %}</a>
+                {% if  user.is_authenticated %}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link"> {{ user.username }} </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="{% url 'linkler' %}">{% trans "Yapıştırılanlar" %}</a>
+                            <a class="navbar-item" href="{% url 'socialaccount_connections' %}">{% trans "Sosyal Hesaplar" %}</a>
+                            <a class="navbar-item" href="{% url 'profil_details_view' %}">{% trans "Ayarlar" %}</a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="{% url 'account_logout' %}">{% trans "Oturumu Kapat" %}</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a class="navbar-item" href="{% url 'account_login' %}"> {% trans "Oturum Aç" %} </a>
+                {% endif %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">{% trans "Hakkımızda" %}</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="{% url 'disclaimer' %}">{% trans "Sorumluluk Reddi" %}</a>
+                        <a class="navbar-item" href="{% url 'terms_of_service' %}">{% trans "Hizmet Şartları" %}</a>
+                        <a class="navbar-item" href="{% url 'privacy' %}">{% trans "Gizlilik Politikası" %}</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="{% url 'about' %}">{% trans "Hakkımızda" %}</a>
+                        <a class="navbar-item" href="{% url 'contact_view' %}">{% trans "İletişim" %}</a>
+                    </div>
+                </div>
+            </div>
+        {% endactiveurl %}
+    </div>
+</nav>

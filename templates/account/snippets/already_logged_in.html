@@ -1,0 +1,5 @@
+{% load i18n %}
+{% load account %}
+
+{% user_display user as user_display %}
+<p><strong>{% trans "DIKKAT" %}:</strong> {% blocktrans %}{{ user_display }} Zaten oturum açmışsınız.{% endblocktrans %}</p>

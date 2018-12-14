@@ -1,0 +1,37 @@
+{% if message %}
+    {% for message in messages %}
+        <div class="container">
+            <div class="columns">
+                <div class="column is-4 is-offset-4">
+                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                        <button class="delete"></button>
+                        {{ message|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if form.errors %}
+    <div class="container">
+        <div class="columns is-fullwidth">
+            <div class="column">
+                <div class="notification is-danger">
+                    <button class="delete"></button>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <a href="#id_{{ field.name }}"
+                                   class="error">{{ field.name }} {{ error|escape }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

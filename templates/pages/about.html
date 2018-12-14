@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans 'Yapıştır.io! - Hakkında' %} {% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-thirds">
+                    <div class="content">
+                        <h1 class="title">{% trans 'Yapıştır.io Hakkında' %} </h1>
+                        <p>{% trans 'Yapıştırma servisimiz bir takım sürdürülebilirlik sorunlarından kurtulmak, kısıtlamaları ortadan kaldırmak ve can sıkıntımızı gidermek için geliştirilmiştir.' %}</p>
+                        <h3> {% trans 'Alt Yapımız' %} </h3>
+                        <p>{% trans 'Uygulamamızı oluştururken kullandıklarımız' %}</p>
+                        <ul>
+                            <li><b>{% trans 'Yazılım iskeleti:' %}</b> Django</li>
+                            <li><b>{% trans 'Programlama dili:' %}</b> Python, JavaScript</li>
+                            <li><b>{% trans 'Front-end:' %}</b> Bulma CSS</li>
+                            <li><b>{% trans 'Editör:' %}</b> Custom</li>
+                            <li><b>{% trans 'Vurgulama:' %}</b> Pygments</li>
+                            <li><b>{% trans "Fontlar:" %}</b> Font Awesome</li>
+                            <li><b>{% trans 'WSGI sunucusu:' %}</b> UWSGI</li>
+                            <li><b>{% trans 'Web server:' %}</b> Nginx</li>
+                            <li><b>{% trans 'Veritabanı:' %}</b> Postgresql</li>
+                            <li><b>{% trans 'İçerik ID:' %}</b> SystemRandom</li>
+                            <li><b>{% trans 'İşletim sistemi:' %}</b> Debian</li>
+                            <li><b>{% trans 'Hata takip:' %}</b> Sentry</li>
+                            <li><b>{% trans 'Dil desteği:' %}</b> Turkish, English</li>
+                            <li><b>{% trans 'Sağlayıcı:' %}</b> Hetzner Online GmbH</li>
+                        </ul>
+                        <p><b>{% trans 'Kaynak Kodlar:' %}</b> YAKINDA</p>
+                        <br>
+                        <p><b>{% trans 'Güncellemeler:' %}</b> <a
+                                href=" {% url 'changelog' %} "> {% trans 'Değişiklik Günlüğü' %} </a></p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h1 class="title">{% trans 'İstatistikler' %}</h1>
+                    <p><strong>{{ total }}</strong> {% trans 'Adet içerik veritabanımızda bulunmaktadır.' %}</p>
+                    <a href="https://www.hetzner.com/" target="_blank"
+                       title="Hetzner Online offers professional hosting solutions for a fair price."><img
+                            src="{% static "images/hetzner-hosted-201.gif" %}" alt="Hetzner Online"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

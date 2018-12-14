@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans "Hizmet Şartları - Yapistir.io" %} {% endblock title %}
+
+{% block content %}
+    <div class="container is-fullhd">
+        <h1 class="title"> {% trans "Hizmet Şartları" %} </h1>
+        <div class="content">
+            <p> {% trans "Yapistir_io'yu kullandığınız için teşekkür ederiz! Burada olduğun için çok mutluyuz. Lütfen Yapistir_io'ya erişmeden veya servisimizi kullanmadan önce bu Hizmet Şartları sözleşmesini dikkatlice okuyun. " %} </p>
+            <p> {% trans "" %} </p>
+
+            <h2> {% trans "A. Tanımlar" %} </h2>
+            <ul>
+                <li>{% trans "'Servis', Yapistir_io tarafından sağlanan uygulamalara, yazılımlara, ürün ve hizmetlere atıfta bulunur." %}</li>
+                <li>{% trans "'Web Sitesi', Yapistir_io tarafından web sitesi aracılığıyla sağlanan tüm içerik, hizmetler ve ürünleri ifade eder." %} </li>
+                <li>{% trans "'Kullanıcı', Yapistir_io web sitesini veya hizmetini ziyaret eden veya kullanan bireysel kişi, şirket veya kuruluşa atıfta bulunur; Hesabın herhangi bir bölümüne erişen, kullanan; veya bu, hesabın işlevlerinin yerine getirilmesine yönlendirir. Bir Kullanıcı en az 15 yaşında olmalıdır." %}</li>
+                <li>{% trans "'Biz', Yapistir_io'nun yanı sıra iştiraklerimiz, yöneticilerimiz, yüklenicilerimiz, lisans verenler, memurlar, temsilciler ve çalışanlarımızı ifade eder." %}</li>
+                <li>{% trans "'İçerik', Web sitesinde mevcut olan veya web sitesinde sunulan metin, veri, makaleler, resimler, fotoğraflar, grafikler, yazılımlar, uygulamalar, tasarımlar, özellikler ve web sitesi'nde mevcut olan ya da başka bir şekilde temin edilebilen diğer materyaller de dahil ancak bunlarla sınırlı olmamak üzere sunulan içerikleri ifade eder. 'İçerik' ayrıca hizmetleri içerir." %}</li>
+                <li>{% trans "'Kullanıcı Tarafından Oluşturulan İçerik', Kullanıcılarımız tarafından oluşturulmuş veya yüklenen, yazılı veya başka türlü içerikleri ifade eder." %}</li>
+            </ul>
+            <p> {% trans "" %} </p>
+            <h2> {% trans "B. Kullanıcı Hesap Koşulları" %} </h2>
+
+            <h4>{% trans "1. Gerekli Bilgiler" %}</h4>
+            <p>{% trans "Kayıt işlemini tamamlamak için geçerli bir e-posta adresi, şifre ve kullanıcı adı sağlamalısınız. Bu şartları tüzel kişi adına kabul etmedikçe (tüzel kişi hakkında daha fazla bilgiye ihtiyaç duyarsak) veya ücretli* bir hesap seçerseniz, talep edilen diğer bilgiler isteğe bağlıdır." %}</p>
+            <h4>{% trans "2. Hesap Gereksinimleri" %}</h4>
+            <p>{% trans "Yapistir_io'nun hizmetindeki hesaplar için birkaç basit kural vardır." %}</p>
+            <ul>
+                <li>{% trans "Bir hesap oluşturmak için insan olmalısınız. 'Botlar' veya diğer otomatik yöntemler tarafından kaydedilmiş hesaplara izin verilmez." %}</li>
+                <li>{% trans "Bir kişi veya tüzel kişi, birden fazla hesap" %} <b>KULLANAMAZ</b></li>
+                <li>{% trans "15 yaşında veya daha büyük olmalısınız. Yapistir_io, Hizmetimizi 15 yaşından küçük çocuklara hedeflemez ve hizmetimizdeki 16 yaşın altındaki herhangi bir Kullanıcıya izin vermez. 15 yaşın altındaki herhangi bir kullanıcıyı öğrenirsek, o kullanıcının hesabı hemen sonlandırılır." %}</li>
+                <li>{% trans "Türkiye Cumhuriyeti Devleti dışındaki bir ülkede ikamet ediyorsanız, ülkenizin minimum yaş sınırlaması değişiklik gösterebilir; Böyle bir durumda, ülkenizin yasalarına uymaktan siz sorumlusunuz." %}</li>
+            </ul>
+            <h4>{% trans "3. Kullanıcı Hesap Güvenliği" %}</h4>
+            <p>{% trans "Hizmetimizi kullanırken hesabınızı güvende tutmak sizin sorumluluğunuzdadır." %}</p>
+            <ul>
+                <li>{% trans "Hesabınız altında gerçekleşen tüm içerik ve etkinliklerden siz sorumlusunuz." %}</li>
+                <li>{% trans "Hesabınızın ve şifrenizin güvenliğini sağlamakla yükümlüsünüz. Yapistir_io, bu güvenlik yükümlülüğüne uyulmamasından kaynaklanan herhangi bir kayıp veya hasardan sorumlu tutulamaz." %}</li>
+                <li>{% trans "Şifrenizin veya hesabınızın yetkisiz kullanımı da dahil olmak üzere, hesabınız aracılığıyla herhangi bir yetkisiz kullanımının veya hesabımıza erişiminizin farkına varırsanız, derhal Yapistir_io güvenlik birimine bildirimde bulunun." %}</li>
+            </ul>
+            <h2>{% trans "C. Kabul Edilebilir Kullanım" %}</h2>
+            <h4>{% trans "1. Yasa ve Yönetmeliklere Uyum" %}</h4>
+            <p>{% trans "Web sitesi ve hizmet'i kullanımınız, telif hakkı veya ticari marka yasaları, ihracat kontrol yasaları veya yargı alanınızdaki diğer yasalar da dahil olmak üzere geçerli yasaları ihlal etmemelidir. Hizmet kullanımınızın yasalara ve ilgili yönetmeliklere uygun olduğundan emin olmak sizin sorumluluğunuzdadır." %}</p>
+            <h4>{% trans "2. İçerik Kısıtlamaları" %}</h4>
+            <article class="message is-danger">
+                <div class="message-header">
+                    <p> {% trans "DİKKAT" %} </p>
+                </div>
+                <div class="message-body">
+                    <p>{% trans "Hiçbir koşul altında aşağıdaki hiçbir içeriği yüklemeyeceğinizi, yayınlamayacağınızı, barındırmayacağınızı veya iletmeyeceğinizi kabul edersiniz:" %}</p>
+                    <ul>
+                        <li>{% trans "Yasa dışı veya yasa dışı faaliyetlere teşvik etme" %}</li>
+                        <li>{% trans "Cinsel olarak müstehcen içerik barındırmak veya içerme" %}</li>
+                        <li>{% trans "İftira, zorbalık, hakaret veya hileli içerik" %}</li>
+                        <li>{% trans "Herhangi bir birey veya gruba karşı ayrımcılık veya küfür" %}</li>
+                        <li>{% trans "Herhangi bir etkin kötü amaçlı yazılım veya yükleyici veya sistemleri istismar etmek üzere (bir komut ve komuta kontrol sisteminin bir parçası) platformumuzu kullanır; veya" %}</li>
+                        <li>{% trans "Patent, ticari marka, ticari sır, telif hakkı, tanıtım hakkı veya diğer haklar dahil olmak üzere herhangi bir tarafın mülkiyet hakkını ihlal eder." %}</li>
+                    </ul>
+                </div>
+            </article>
+            <h4>{% trans "3. Davranış Kısıtlamaları" %}</h4>
+            <p>{% trans "Yapistir_io'yu kullanırken, hiçbir koşul altında aşağıdakileri yapmayacağınızı kabul edersiniz:" %}</p>
+            <ul>
+                <li>{% trans "Yapistir_io çalışanları ve aracıları veya diğer Yapistir_io Kullanıcıları dahil olmak üzere herhangi bir kişi veya gruba karşı taciz, taciz, tehdit veya şiddeti teşvik etme;" %}</li>
+                <li>{% trans "sunucularımızı aşırı otomatikleştirilmiş toplu aktivite için (örneğin spam, duplicate) kullanan veya sunucularımız aracılığıyla herhangi bir istenmeyen reklam veya talep formunu zenginleştirme gibi hızlı yönlendirmeler gibi aktaran;" %}</li>
+                <li>{% trans "Yapistir_io sunucularını web sitemize veya hizmetimize zarar verebilecek şekillerde bozmaya veya değiştirmeye, Yapistir_io'nun sunucularına gereksiz yollarla otomatik araçlarla içerik yerleştirmeye veya Yapistir_io'nun hizmetine yetkinizi aşacak şekilde erişmeye çalışın (Yapistir_io Bug Bounty programı tarafından yetkilendirilenler hariç);" %}</li>
+                <li>{% trans "Yapistir_io ile yanlış bir ilişki kurmak da dahil olmak üzere, çalışanlarımız veya temsilcilerimiz de dahil olmak üzere herhangi bir kişi veya tüzel kişiliğe bürünme veya kimliğinizi veya sitenizin amacını hileli bir şekilde yanlış temsil ederek kullanma" %}</li>
+                <li>{% trans "herhangi bir üçüncü şahsın gizliliğini ihlal etmek, örneğin başkalarının kişisel bilgilerini rıza göstermeden göndermek gibi." %}</li>
+            </ul>
+            <h4>{% trans "4. Hizmet Kullanım Sınırları" %}</h4>
+            <p>{% trans "Hizmetin herhangi bir bölümünü çoğaltmamayı, kopyalamamayı, satmamayı, yeniden pazarlamamayı veya sömürmemeyi, Hizmetin kullanılmamasını veya Yapistir_io'nun açık yazılı izni olmadan hizmete erişmemeyi kabul edersiniz." %}</p>
+            <h4>{% trans "5. İstek Sınırları" %}</h4>
+            <p>{% trans "Saniyede 1'den fazla istekte bulunmamanızı öneririz. Saniyede 1 isteğin üzerine çıkmanız engellenmez, ancak gereksiz istekte bulunulduğu fark edilirse, ip adresiniz geçici olarak 60 dakika boyunca kısıtlanacaktır." %}</p>
+            <h4>{% trans "6. Kullanıcı Koruması" %}</h4>
+            <p>{% trans "Kullanıcılarımıza önemli ölçüde zarar veren etkinlikte bulunmamayı kabul edersiniz. Kullanıcılarımızı bir bütün olarak korumaya yönelik anlaşmazlıkları çözeceğiz." %}</p>
+            <h4>{% trans "7. Aşırı Bant Genişliği Kullanımı" %}</h4>
+            <p>{% trans "Bant genişliği kullanımınız diğer Yapistir_io kullanıcıları ile ilgili olarak aşırı derecede fazla bant genişliği kullanıldığını belirlersek, bant genişliği tüketiminizi azaltana kadar hesabınızı askıya alma veya içerik barındırma işlemini kısma hakkımız saklıdır." %}</p>
+            <h2>{% trans "D. Kullanıcı Tarafından Oluşturulan İçerik" %}</h2>
+            <h4>{% trans "1. Kullanıcı Tarafından Oluşturulan İçeriklerin Sorumluluğu" %}</h4>
+            <p>Hizmeti kullanırken <b>Kullanıcı Tarafından Oluşturulmuş İçerik</b> oluşturabilir veya yükleyebilirsiniz.
+                Bu İçerik'in içeriği ne olursa olsun, hizmetlerimiz aracılığıyla gönderdiğiniz, karşıya yüklediğiniz
+                veya başka bir şekilde kullanıma sunabileceğiniz <b>Kullanıcı Tarafından Oluşturulan İçeriğin</b> ve
+                bunlardan kaynaklanan zararlardan yalnızca siz sorumlusunuz. <b>Kullanıcı Tarafından Oluşturulan
+                    İçeriğinizin</b> herkese açık bir şekilde gösterilmesinden veya kötüye kullanılmasından <b>kesinlikle
+                    sorumlu DEĞİLİZ</b>.</p>
+            <h4>2. İçerik Kaldırma</h4>
+            <p>Kullanıcı Tarafından Üretilen İçeriği önceden görüntülemiyoruz, ancak tamamen kendi takdirimize bağlı
+                olarak(periyodik kontrol, kötüye kullanım bildirileri), herhangi bir Yapistir_io şartını veya politikasını
+                ihlal eden <b>Kullanıcı Tarafından Oluşturulan İçeriği</b> kaldırma hakkına sahibiz.</p>
+            <h2>E. Özel İçerikler</h2>
+            <h4>1. Özel İçeriklerin kontrolü</h4>
+            <p>Üyeler, genel kullanıcının İçeriğe erişimi kontrol etmesini sağlayan özel içeriklere sahip olabilir.</p>
+            <h4>2. Özel İçeriklerin gizliliği</h4>
+            <p>Yapistir_io, özel içeriklerinizin içeriğini sizin için gizli olarak kabul eder. Yapistir_io, özel
+                içeriklerin içeriğini, izinsiz kullanım, erişim veya ifşa etmekten, benzer nitelikteki kendi gizli
+                bilgilerimizi korumak için kullanacağımız şekilde ve hiçbir şekilde makul bir bakımdan daha az olmayan
+                bir şekilde koruyacaktır.</p>
+            <h4>3. Erişim</h4>
+            <p>Yapistir_io çalışanları yalnızca aşağıdaki durumlarda özel pastalarınızın içeriğine erişebilir:</p>
+            <ul>
+                <li>Desteğiniz için, rızanız ve bilginizle. Yapistir_io, destek nedenleriyle özel bir yapıştırmaya
+                    erişirse, bunu yalnızca hesap sahibinin izni ve bilgisi ile yaparız.
+                </li>
+                <li>Güvenlik nedeniyle erişim gerektiğinde.</li>
+                <li>Kötüye kullanım bildirimi yapıldığında(Özel içerik eğer başkaları ile paylaşılırsa)</li>
+            </ul>
+            <h4>4. Hariç tutulanlar</h4>
+            <p>Özel bir içeriğin içerik kanunları veya bu şartların ihlali olduğuna inanmamız için bir nedenimiz varsa,
+                bunlara erişme, inceleme ve kaldırma hakkına sahibiz. Ayrıca, özel içeriklerinizi ifşa etmek için
+                yasalarca zorlanabiliriz.</p>
+            <h2>F. Telif Hakkı İhlali ve DMCA Politikası</h2>
+            <p>Web sitemizdeki içeriğin telif hakkınızı ihlal ettiğine inanıyorsanız, lütfen <b>Digital Millennium Telif
+                Hakkı Yasamız</b> uyarınca bizimle iletişime geçin.</p>
+            <h2>G. Şartlarda Değişiklik</h2>
+            <p>Sadece kendi takdir yetkimiz dahilinde, bu hizmet Koşullarını herhangi bir zamanda değiştirme hakkını
+                saklı tutarız ve söz konusu değişikliklerde bu <b>Hizmet Şartlarını</b> güncelleyeceğiz.</p>
+        </div>
+
+        <article class="message is-info">
+            <div class="message-header">
+                <p> {% trans "ÖNEMLİ" %} </p>
+            </div>
+            <div class="message-body">
+                {% trans "Tüm değişiklikler burada bildirilecek ve aksi belirtilmedikçe burada bildirilen her türlü değişiklik yayınlandığı tarihten itibaren yürürlüğe girecektir." %}
+            </div>
+        </article>
+        <p> {% trans "<b>Son Güncelleme Tarihi:</b> 3 Kasım 2018" %} </p>
+    </div>
+{% endblock content %}

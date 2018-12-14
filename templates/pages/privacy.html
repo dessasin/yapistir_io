@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans "Gizlilik Politikası - Yapistir.io" %} {% endblock title %}
+
+{% block content %}
+    <div class="container is-fullhd">
+        <h1 class="title"> {% trans "Gizlilik Politikası" %} </h1>
+        <div class="content">
+            <p> {% trans "Gizlilik Politikamız servisimizi kullanırken hangi verileri neden topladığımızı ve bu verilerle ne yaptığımızı anlamanıza yardımcı olmak için bir takım açıklamaları içermektedir. " %} </p>
+
+            <h2> {% trans "Çerez (“Cookie”) Nedir?" %} </h2>
+            <p> {% trans "Çerezler, ziyaret ettiğiniz internet siteleri tarafından tarayıcılar aracılığıyla cihazınıza veya ağ sunucusuna depolanan küçük metin dosyalarıdır. Çerezler, ziyaret ettiğiniz web sitesiyle ilişkili sunucular tarafından oluşturulurlar. Böylelikle ziyaretçi aynı siteyi ziyaret ettiğinde sunucu bunu anlayabilir." %} </p>
+            <p> {% trans "Çerezler, ziyaretçilere ilişkin isim, cinsiyet veya adres gibi kişisel verileri içermezler. Daha detaylı bilgi için <a href='https://www.aboutcookies.org/'>www.aboutcookies.org</a> web sitesini ziyaret edebilirsiniz." %} </p>
+            <h2> {% trans "Toplanan Bilgiler" %} </h2>
+            <ul>
+                <li> {% trans "Tarayıcı Bilgileriniz" %}</li>
+                <li> {% trans "IP Adresiniz" %} </li>
+                <li> {% trans "Yönlendirilen URL Bilgisi" %} </li>
+                <li> {% trans "Çerez Bilgisi" %} </li>
+            </ul>
+            <p> {% trans "Görüntülediğiniz sayfalar, tıkladığınız bağlantılar ve hizmetimiz ile ilgili yaptığınız diğer işlemler hakkında bilgi toplamak için reklam ve e-posta içeriğimiz ile, çerez, web işaretçileri (beacons), benzersiz kimlikleme ve benzer teknolojileri <b>Google Analytics</b> aracılığı ile kullanmaktayız." %} </p>
+            <p> {% trans "Topladığımız bilgileri, hizmetimizi sunmak, sürdürmek, korumak ve iyileştirmek, yeni hizmetler geliştirmek ve hem kendimizi hem de kullanıcılarımızı korumak için kullanırız. Bu bilgileri ayrıca, daha uygun hizmet sağlamak ve akademik amaçlar için de kullanırız." %} </p>
+            <h1 class="title"> {% trans "İçerik" %} </h1>
+            <p> {% trans "Yapıştırma alanını kullanarak yayınladığınız içerikler liste dışında paylaşıldığı sürece arama motorlarına tamamen kapalıdır. Google, Bind, Yandex vb sitelerde içerikleriniz siz yayınlamadığınız sürece paylaşılmaz." %} </p>
+        </div>
+
+        <article class="message is-info">
+            <div class="message-header">
+                <p> {% trans "ÖNEMLİ" %} </p>
+            </div>
+            <div class="message-body">
+                {% trans "Tüm değişiklikler burada bildirilecek ve aksi belirtilmedikçe burada bildirilen her türlü değişiklik yayınlandığı tarihten itibaren yürürlüğe girecektir." %}
+            </div>
+        </article>
+        <p> {% trans "<b>Tarih:</b> 1 Nisan 2018" %} </p>
+    </div>
+{% endblock content %}

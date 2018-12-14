@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %} {{ request.GET.q }} - Arama yap {% endblock %}
+
+{% block js_header %}
+{% endblock js_header %}
+
+{% block content %}
+    {% for message in messages %}
+        <div class="container">
+            <div class="columns is-fullwidth">
+                <div class="column">
+                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                        <button class="delete"></button>
+                        {{ message|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="column">
+        <div class="card events-card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{ request.GET.q }} - {% trans " Arama Sonucu" %}
+                </p>
+            </header>
+            <div class="card-table">
+                <div class="content">
+                    {% if object_list %}
+                        <table class="table is-fullwidth is-striped">
+                            <thead>
+                            <th>Bağlantı</th>
+                            <th>Etiketler</th>
+                            <th>Başlık</th>
+                            </thead>
+                            <tbody>
+                            {% for data in object_list %}
+                                <tr>
+                                    <td><a href="/{{ data.slug }}">
+                                        https://yapistir.io/{{ data.slug }}</a></td>
+                                    <td>{{ data.tag}}</td>
+                                    <td>{% if data.title == '' %} Başlıksız {% else %}
+                                        {{ data.title }} {% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <h2 class="title has-text-centered">Aradığınız kritere göre içerik girilmemiş</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "include/__paginator.html" %}
+{% endblock %}

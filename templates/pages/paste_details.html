@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load recaptcha %}
+
+{% block title %} yapistir.io/{{ object.slug }} ({{ object.lexer }}) - yapistir.io {% endblock title %}
+
+{% block description %}{{ object.content|truncatewords:20 }}{% endblock description %}
+
+{% block js_header %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js"></script>
+{% endblock js_header %}
+
+{% block seo %}
+    <link rel="canonical" href="yapistir.io/{{ object.slug }}"/>
+
+    <meta property="og:title" content="yapistir.io/{{ object.slug }} ({{ object.lexer }}) - yapistir.io"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="yapistir.io/{{ object.slug }}"/>
+    <meta property="og:image" content="https://yapistir.io{% static "images/logo.png" %}"/>
+    <meta property="og:site_name" content="Yapistir_io"/>
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+        },
+        "headline": "{{ object.title }}",
+        "image": [
+         "https://yapistir.io{% static "images/logo.png" %}",
+         ],
+        "datePublished": "{{ object.publish }}",
+        "dateModified": "{{ object.publish }}",
+        "author": {
+        "@type": "person",
+        "name": "{{ object.name }}"
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "yapistir.io",
+        "logo": {
+        "@type": "ImageObject",
+        "url": "{% static "images/logo.png" %}"
+        }
+        },
+        "description": "{{ object.content|truncatewords:20 }}"
+        }
+    </script>
+{% endblock seo %}
+
+
+{% block content %}
+    {% include "include/__detail_func.html" %}
+    <div class="control">
+        {% for message in messages %}
+            <div class="container">
+                <div class="columns is-fullwidth">
+                    <div class="column">
+                        <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                            <button class="delete"></button>
+                            {{ message|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if object.lexer == '_text' %}
+            {% include 'include/text.html' %}
+        {% elif object.lexer == '_markdown' %}
+            {% include 'include/markdown.html' %}
+        {% elif object.lexer == '_rst' %}
+            {% include 'include/rst_text.html' %}
+        {% elif object.lexer == '_code' %}
+            {% include 'include/code.html' %}
+        {% else %}
+            {% include 'include/code.html' %}
+        {% endif %}
+    </div>
+{% endblock content %}
+
+{% block js_code %}
+    <script>
+        (function () {
+            new ClipboardJS('#copy-btn');
+        })();
+    </script>
+{% endblock js_code %}

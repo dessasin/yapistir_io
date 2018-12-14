@@ -1,0 +1,82 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.70, maximum-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#FEDC60"/>
+    <meta name="msapplication-navbutton-color" content="#FEDC60"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FEDC60"/>
+    <link rel="canonical" href="https://yapistir.io">
+
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="description" content="{% block description %}{% endblock description %}">
+
+    {% block seo %} {% endblock seo %}
+
+    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.png" %}"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+            integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/custom.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bulma-tooltip.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
+    {% block js_header %} {% endblock js_header %}
+</head>
+
+<body class="Site">
+<main class="Site-content">
+    <section class="is-fullheight is-default is-bold">
+        <div class="hero-head">
+            {% include "include/__menu.html" %}
+        </div>
+        <div class="hero-body">
+            <div class="container is-fluid">
+                {% block content %} {% endblock content %}
+            </div>
+        </div>
+        <!--[if lt IE 8]>
+                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    </section>
+</main>
+
+{% include "include/__footer.html" %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static "assets/js/bulma.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+<script>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#666666"
+                },
+                "button": {
+                    "background": "#fff",
+                    "text": "#000000"
+                }
+            },
+            "theme": "classic",
+            "content": {
+                "message": "{% trans 'Bu internet sitesinde, kullanıcı deneyimini geliştirmek ve internet sitesinin verimli çalışmasını sağlamak amacıyla çerezler kullanılmaktadır.' %}",
+                "dismiss": "{% trans 'Tamam' %}",
+                "link": "{% trans 'Ayrıntıları inceleyin' %}",
+                "href": "{% url 'privacy' %}"
+            }
+        })
+    });
+</script>
+
+{% block js_code %} {% endblock js_code %}
+
+</body>
+</html>

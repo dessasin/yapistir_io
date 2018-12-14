@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Kayıtlar Kapalı" %} - Yapistir.io!{% endblock %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h3 class="title">Kayıtlar Kapalı</h3>
+                    <div class="box">
+                        <p>{% trans "Üzgünüz, ancak kayıt şu anda kapalı." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

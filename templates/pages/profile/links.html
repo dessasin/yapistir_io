@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} Kullanıcı Kontrol Paneli - Yapistir.io! {% endblock %}
+
+{% block js_header %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/user.css" %}">
+{% endblock js_header %}
+
+{% block content %}
+
+    <section class="info-tiles">
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title"> {{ paste_total }} </p>
+                    <p class="subtitle"> {% trans "Sizin İçeriğiniz" %} </p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title"> {{ total }} </p>
+                    <p class="subtitle"> {% trans "Toplam İçerik" %} </p>
+                </article>
+            </div>
+        </div>
+    </section>
+    {% for message in messages %}
+        <div class="container">
+            <div class="columns is-fullwidth">
+                <div class="column">
+                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                        <button class="delete"></button>
+                        {{ message|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="column">
+        <div class="card events-card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {% trans "İçeriğiniz" %}
+                </p>
+            </header>
+            <div class="card-table">
+                <div class="content">
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                        <th>URL</th>
+                        <th>Rumuz</th>
+                        <th>Eklendiği Tarih ve Saat</th>
+                        <th>Yok Edileceği Tarih</th>
+                        <th>Eylemler</th>
+                        <th>Koruma</th>
+                        <th>Gösterim</th>
+                        </thead>
+                        <tbody>
+                        {% for data in pastes_list %}
+                            <tr>
+                                <td width="5%"><a href="/{{ data.slug }}"> {{ data.slug }} </a></td>
+                                <td> {{ data.name }} </td>
+                                <td> {{ data.publish }} </td>
+                                <td> {% if data.expire == None %} Sınırsız {% else %}
+                                    {{ data.expire }} {% endif %} </td>
+                                <td>
+                                    <a class="button is-small is-info" href="/{{ data.auth_code }}/Change/">Düzenle</a>
+                                    <a class="button is-small is-danger" href="/{{ data.auth_code }}/Delete/"
+                                       onclick="return confirm('Silmek İstediğine Eminmisin?')">Sil</a>
+                                </td>
+                                <td> {% if data.password %}
+                                    <a class="button is-success is-small"> Aktif</a> {% else %}
+                                    <a class="button is-danger is-small"> Pasif</a> {% endif %} </td>
+                                <td width="5%"> {{ data.view_count }} </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "include/__paginator.html" %}
+{% endblock content %}

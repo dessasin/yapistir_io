@@ -1,0 +1,73 @@
+{% load i18n %}
+{% load recaptcha %}
+
+<nav class="level">
+    <div class="level-left">
+        <div class="level-item">
+            <span class="tooltip" data-tooltip="Kullanıcı"> <i class="fas fa-user"></i> {% if object.name %}
+                <b>{{ object.name }}</b> {% elif object.name == '' %} Anonim {% else %}
+                <b>  </b> {% endif %} </span>
+        </div>
+        <div class="level-item">
+            <span class="tooltip" data-tooltip="Eklenme tarihi"> <i
+                    class="far fa-calendar-alt"></i> <b>{{ object.publish|date:"j F Y, H:i" }}</b> </span>
+        </div>
+        <div class="level-item">
+            {% if object.expire_type == 2 %}
+                <span class="tooltip" data-tooltip="Süre sonra silinecek"> <i class="far fa-calendar-times"></i> <b>Limitsiz</b> </span>
+            {% elif object.expire_type == 3 %}
+                <span class="tooltip" data-tooltip="Süre sonra silinecek"> <i
+                        class="far fa-calendar-times"></i> <b>{{ object.expire|timeuntil }}</b> </span>
+            {% endif %}
+        </div>
+        <div class="level-item">
+            <span class="tooltip" data-tooltip="Gösterim"> <i
+                    class="fas fa-eye"></i> <b>{{ object.view_count }}</b> </span>
+        </div>
+        <div class="level-item">
+            <div class="control">
+                {% if object.lexer != 'text' %}
+                    <label for="checkbox">
+                        <input type="checkbox" id="wordwrap" {% if wordwrap %}checked{% endif %}> Wordwrap
+                    </label>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="level-right">
+        <div class="level-item">
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input" id="id_copy" value="https://yapistir.io/{{ object.slug }}/" readonly>
+                </div>
+                <div class="control">
+                    <button class="button is-info tooltip" data-tooltip="Kopyala" id="copy-btn"
+                            data-clipboard-target="#id_copy"><span class="icon"><i
+                            class="fas fa-copy"></i></span></button>
+                </div>
+            </div>
+        </div>
+        {% if object.password %}
+        {% else %}
+            <div class="level-item">
+                <p class="level-item"><a class="button is-link"
+                                         href="{% url 'paste_details_raw' paste_id=object.slug %}"><span
+                        class="icon tooltip" data-tooltip="Txt olarak göster"><i
+                        class="fas fa-book"></i></span></a></p>
+            </div>
+        {% endif %}
+        <div class="level-item">
+            <p class="level-item"><a class="button is-danger"
+                                     href="{% url 'paste_report_view' %}"><span
+                    class="icon tooltip" data-tooltip="Kötüye kullanım bildir"><i
+                    class="fas fa-exclamation-circle"></i></span></a></p>
+        </div>
+    </div>
+</nav>
+
+
+<div class="tags">
+    {% for data in tags %}
+        <span class="tag"><a href="/Search?q={{ data.word }}">{{ data.word }}</a></span>
+    {% endfor %}
+</div>

@@ -1,0 +1,29 @@
+{% if pastes_list.has_other_pages %}
+    <div class="column">
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            <ul class="pagination-list">
+                {% if pastes_list.has_previous %}
+                    <li><a class="pagination-link" aria-label="page"
+                           href="?page={{ pastes_list.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in pastes_list.paginator.page_range %}
+                    {% if pastes_list.number == i %}
+                        <li><a class="pagination-link is-current" aria-label="Page {{ i }}"
+                               aria-current="page">{{ i }}</a></li>
+                    {% else %}
+                        <li><a class="pagination-link" aria-label="Goto page {{ i }}" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if pastes_list.has_next %}
+                    <li><a class="pagination-link" aria-label="Goto page {{ pastes_list.next_page_number }}"
+                           href="?page={{ pastes_list.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

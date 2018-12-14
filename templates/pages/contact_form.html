@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load recaptcha2 %}
+
+{% block title %} İletişim Formu {% endblock %}
+
+{% block js_header %}
+    {% recaptcha_init 'tr' %}
+{% endblock js_header %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <div class="content">
+                        <h2 class="title">{% trans "Bize Ulaşın" %}</h2>
+                        <br>
+                        <p class="subtitle">Hizmetimiz ile ilgili her türlü soru, öneri, sorun ya da memnuniyetinizi
+                            bize buradan iletebilirsiniz.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box">
+                        <form action="{% url 'contact_view' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="field">
+                                <div class="control">
+                                    <label class="label">Adınız ve Soyadınız:</label>
+                                    {{ form.ad_soyad }}
+                                </div>
+                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="label">Mail adresiniz:</label>
+                                        <input type="email" class="input" name="mail"
+                                               value="{{ request.user.email }}"
+                                               readonly>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="label">Mail adresiniz:</label>
+                                        {{ form.mail }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="field">
+                                <div class="control">
+                                    <label class="label">İletişim Türü:</label>
+                                    <div class="select is-fullwidth">
+                                        {{ form.iletisim_nedeni }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Açıklama:</label>
+                                <div class="control">
+                                    {{ form.aciklama }}
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    {{ form.captcha }}
+                                </div>
+                            </div>
+                            <button type="submit"
+                                    class="button is-block is-info is-large is-fullwidth">{% trans "Gönder" %}
+                            </button>
+                        </form>
+                        {% for message in messages %}
+                            <div class="is-fullwidth">
+                                <div class="column">
+                                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                                        <button class="delete"></button>
+                                        {{ message|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

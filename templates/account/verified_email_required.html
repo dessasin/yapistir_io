@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Email adresinizi doğrulayın" %} - Yapistir.io!{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Email adresinizi doğrulayın" %}</h1>
+
+    {% url 'account_email' as email_url %}
+
+    <p>Sitenin bu bölümü, kim olduğunu iddia ettiğinizi doğrulamamızı gerektiriyor. Bu amaçla, e-posta
+        adresinizin sahipliğini doğrulamanızı istiyoruz.</p>
+
+    <p>Doğrulama için size bir e-posta gönderdik. Lütfen bu e-postanın içindeki bağlantıya tıklayın. Birkaç dakika
+        içinde almazsanız lütfen bizimle iletişime geçin.</p>
+
+    <p><strong> Not: </strong> yine de isterseniz <a href="{{ email_url }}"> eposta adresinizi değiştirebilirsiniz</a>.
+    </p>
+{% endblock %}

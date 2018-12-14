@@ -1,0 +1,61 @@
+1 April 2018 - version 0.1
+
+- First Release
+
+3 April 2018 - version 0.5
+
+- Remove reCaptcha
+- Remove CodeMirror main page
+- Remove local css and js
+- Minify HTML content
+- Fix validation issue
+- Fix design issue
+- Fix possible code injection issue
+- Fix footer 
+- Fix favicon
+
+17 April 2018 - version 1.0
+
+- Add user area
+- if user does not login to web site do not delete paste
+- Fix Expire Dropdown bug
+- Fix page error bug
+- Fix url redirect bug
+- Simlify logic
+- Remove delete paste func
+- Fix date bug
+- Fix error messages
+- Fix session
+
+24 September 2018 - version 2.0
+
+- Added markdown support
+- Added reStructuredText support
+- Added reCaptcha (Only Anon users)
+- Added password protected pastes (Only registered users)
+- Added Embed
+- Added Pastebin import
+- Added content filesize
+- Added last public paste list
+- Added sitemap
+- Added abuse report
+- Added content search
+- Added social login
+- Added session control
+- Improve SEO
+- Change ux
+- Change unlimited paste logic
+- Change database logic
+- Change general system logic
+- Fix css and javascript issue
+- Fix tag support
+- Fix spam
+- Fix security issue
+- Fix header issue
+- Fix absolute path issue
+- Fix overflow issue
+- Fix long content issue (Limit 512kb)
+- Remove codemirror js
+- Update deps
+- Update FontAwesome
+- Update Jquery

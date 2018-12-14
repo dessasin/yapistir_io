@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+{% load recaptcha2 %}
+
+{% block title %} Korumalı yapistir.io/{{ object.slug }} ({{ object.lexer }}) - Yapistir.io!{% endblock title %}
+
+{% block js_header %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/login.css" %}">
+    {% recaptcha_init 'tr' %}
+{% endblock js_header %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Parola</h3>
+                <p class="subtitle has-text-grey">İçeriği görebilmek için parolanızı giriniz.</p>
+                <div class="box">
+                    <form action=" {% url 'paste_details' paste_id=object.slug %} " method="POST">
+                        {% csrf_token %}
+                        <div class="field">
+                            <div class="control">
+                                {% render_field form.password class+="input is-large" placeholder="Parolanız" %}
+                            </div>
+                            <br>
+                            <div class="control">
+                                {{ form.captcha }}
+                            </div>
+                        </div>
+                        <button type="submit" class="button is-block is-info is-large is-fullwidth">Göster</button>
+                    </form>
+                    {% for message in messages %}
+                        <div class="container">
+                            <div class="columns is-fullwidth">
+                                <div class="column">
+                                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                                        <button class="delete"></button>
+                                        {{ message|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

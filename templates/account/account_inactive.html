@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Account Inactive" %}{% endblock title %}
+
+{% block content %}
+    <section class="hero-body">
+        <div class="container">
+            <div class="columns has-text-centered">
+                <div class="column">
+                    <div class="field is-vcentered">
+                        <div class="content">
+                            <h1>{% trans "Account Inactive" %}</h1>
+
+                            <p>{% trans "This account is inactive." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

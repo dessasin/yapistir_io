@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}Birincil e-posta adresinizi kaldıramazsınız ({{email}}).{% endblocktrans %}

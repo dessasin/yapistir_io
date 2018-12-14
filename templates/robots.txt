@@ -1,0 +1,61 @@
+User-agent: *
+Sitemap: https://yapistir.io/sitemap.xml
+Disallow: /Search?q=
+Disallow: /ghost/
+Disallow: /admin/
+Disallow: /*.html$
+Disallow: /*.php$
+Disallow: /*.json$
+Disallow: /*.asp$
+Disallow: /*.lua$
+Disallow: /*.py$
+Disallow: /*.ex$
+Disallow: /*.cgi$
+Allow: /*.css
+Allow: /*.js
+Host: https://yapistir.io
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: duggmirror
+Disallow: /
+
+User-agent: Yandex
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SMTBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent : DAUM
+Disallow: /
+
+User-agent: metajobbot
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: Ezooms
+Disallow: /
+
+User-agent: fyberspider
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: MojeekBot
+Disallow: /
+
+User-agent: 008
+Disallow: /

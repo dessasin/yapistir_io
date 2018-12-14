@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans '404 Sayfa Bulunamadı' %}{% endblock %}
+
+
+{% block content %}
+    <div>
+        <p>{% trans 'Aradığın şey herneyse artık yok gibi duruyor.' %}</p>
+        <img src="{% static "images/404.gif" %}" alt="">
+    </div>
+{% endblock %}

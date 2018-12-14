@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}Kaldırılan e-posta adresi {{email}}.{% endblocktrans %}

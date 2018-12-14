@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load static %}
+
+<footer class="footer fix-footer">
+    <div class="has-text-centered">
+        <p><i class="far fa-copyright"></i> {% now "Y" %} <a href="https://horus.com.tr">Horus Teknoloji</a> Design with
+            <i style="color:red" class="fas fa-heart"></i> {% trans "Source code licensed" %} <a
+                    href="{% url 'license_file' %}">MIT</a></p>
+        <a href="https://bulma.io">
+            <img src="{% static "images/made-with-bulma.png" %}" alt="Made with Bulma" width="128" height="24">
+        </a>
+    </div>
+</footer>

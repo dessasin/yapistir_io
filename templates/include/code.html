@@ -1,0 +1,13 @@
+{% load recaptcha %}
+
+    <div id="code_frame2">
+        <div id="code_frame">
+            <div id="code_buttons">
+				<span class="go_right">
+                    {% if object.lexer == '_text' %} Plain Text {% elif object.lexer == '_code' %} Plain Code {% else %}{{ object.lexer|capfirst }} {% endif %}
+				</span>
+                {{ object.highlighted|filesize|filesizeformat }}
+            </div>
+        <div class="snippet-code"><ol class="text">{% for line in object|highlight %}<li class="li1" id="l{{ forloop.counter }}">{{ line|safe|default:"&#8203;" }}</li>{% endfor %}</ol></div>
+        </div>
+    </div>

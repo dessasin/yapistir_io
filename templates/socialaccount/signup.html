@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Kayıt ol{% endblock %}
+
+{% block content %}
+
+    <section class="is-success is-fullheight">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h3 class="title">Kayıt Ol?</h3>
+                    <p class="subtitle">{{ provider_name }} hesabınızı {{ site_name }} giriş yapmak için kullanmak
+                        üzeresiniz. Son adım olarak, lütfen aşağıdaki formu doldurun:</p>
+                    <div class="box">
+                        <form action="{% url 'socialaccount_signup' %}" method="POST" class="signup" id="signup_form">
+                            {% csrf_token %}
+                            <div class="field">
+                                <label class="label">E-Posta adresiniz:</label>
+                                <div class="control">
+                                    {% render_field form.email class+="input is-large" placeholder="E-Posta Adresiniz" %}
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">E-Posta adresiniz:</label>
+                                <div class="control">
+                                    {% render_field form.username class+="input is-large" placeholder="Kullanıcı Adınız" %}
+                                </div>
+                            </div>
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}"
+                                       value="{{ redirect_field_value }}"/>
+                            {% endif %}
+                            <button type="submit" class="button is-block is-info is-large is-fullwidth">Kayıt Ol
+                            </button>
+                        </form>
+                    </div>
+                    {% include "include/__errors.html" %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

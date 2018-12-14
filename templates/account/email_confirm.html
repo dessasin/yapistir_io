@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load account %}
+
+{% user_display user %}
+
+{% block title %}E-posta Adresi Doğrula{% endblock %}
+
+{% block content %}
+    <section class="hero-body">
+        <div class="container">
+            <div class="columns has-text-centered">
+                <div class="column">
+                    <div class="field is-vcentered">
+                        <div class="content">
+                            <h2 class="title">E-posta Adresi Doğrula</h2>
+                            {% if confirmation %}
+                                {% user_display confirmation.email_address.user as user_display %}
+                                <p>Lütfen
+                                    <a href="mailto:{{ email }}">{{ email }}</a> adresinin <b>{{ user_display }}</b>
+                                    kullanıcısına ait olduğunu onaylayın.</p>
+
+                                <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="button is-info is-bold">Onayla</button>
+                                </form>
+                            {% else %}
+                                {% url 'account_email' as email_url %}
+                                <p>Bu e-posta onaylama bağlantısının süresi doldu veya geçersiz. Lütfen
+                                                                         <a href="{{ email_url }}"> yeni bir e-posta
+                                        doğrulama isteği yayınlayın </a>
+                                    .</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

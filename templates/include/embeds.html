@@ -1,0 +1,3 @@
+{% load static %}
+document.write('<link rel="stylesheet" type="text/css" href="{% static "assets/css/embed.css" %}">')
+document.write('<div class="embedYapistir"><div class="embedF">&hearts; ile Barındıran <a href="https://yapistir.io" target="_blank">Yapistir_io</a> - <a href="https://yapistir.io/{{ object.slug }}" target="_blank">Sitede Görüntüle</a></div>{{ object.embed_highlight }}</div>');

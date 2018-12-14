@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sosyal Ağ Giriş Hatası" %}{% endblock %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <div class="box">
+                    <h1 class="title">{% trans "Sosyal Ağ Giriş Hatası" %}</h1>
+                    <p>{% trans "Sosyal ağ hesabınız üzerinden giriş yapmaya çalışırken bir hata oluştu." %}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

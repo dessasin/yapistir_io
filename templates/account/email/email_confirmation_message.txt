@@ -1,0 +1,8 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}{{ site_name }}'dan merhaba!
+
+Bu e-postayı alıyorsunuz, çünkü kullanıcı {{ user_display }} hesabınızı bağlamak için bu e-posta adresini kullandı.
+
+Onaylamak için {{ activate_url }}
+{% endblocktrans %}{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}{{ site_name }}'dan teşekkür ederiz!
+{{ site_domain }}{% endblocktrans %}

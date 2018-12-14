@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Sosyal Hesap Bağlantıları" %} - Yapistir.io! {% endblock %}
+
+{% block js_header %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bulma-social.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/bulma-checkradio.min.css" %}">
+{% endblock js_header %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h3 class="title">{% trans "Sosyal Hesap Bağlantıları" %}</h3>
+                    <p class="subtitle">Aşağıdaki üçüncü taraf hesaplarından birini kullanarak hesabınızda oturum
+                        açabilirsiniz:</p>
+                    <div class="box">
+                        <p class="subtitle">Bağlanmış sosyal medya hesapları</p>
+                        {% if form.accounts %}
+                            <form method="post" action="{% url 'socialaccount_connections' %}">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <div class="columns is-fullwidth">
+                                        <div class="column">
+                                            <div class="notification is-danger">
+                                                <button class="delete"></button>
+                                                {% for field in form %}
+                                                    {% if field.errors %}
+                                                        {% for error in field.errors %}
+                                                            <a href="#id_{{ field.name }}"
+                                                               class="error">{{ field.name }} {{ error|escape }}</a>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if form.non_field_errors %}
+                                                    {{ form.non_field_errors }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% for message in messages %}
+                                    <div class="columns is-fullwidth">
+                                        <div class="column">
+                                            <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                                                <button class="delete"></button>
+                                                {{ message|safe }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {% for base_account in form.accounts %}
+                                    {% with base_account.get_provider_account as account %}
+                                        <div class="field">
+                                            <input id="id_account_{{ base_account.id }}" class="is-checkradio"
+                                                   type="radio" name="account"
+                                                   value="{{ base_account.id }}"/>
+                                            <label for="id_account_{{ base_account.id }}"> </label>
+                                            <span class="socialaccount_provider {{ base_account.provider }} {{ account.get_brand.id }}"><i
+                                                    class="fab fa-{{ account.get_brand.name|lower }}"
+                                                    title="{{ account.get_brand.name }}"></i></span>
+                                            {{ account }}
+                                        </div>
+                                    {% endwith %}
+                                {% endfor %}
+
+                                <div>
+                                    <button class="button is-info is-block" type="submit">{% trans 'Delete' %}</button>
+                                </div>
+                            </form>
+
+                        {% else %}
+                            <p>{% trans 'You currently have no social network accounts connected to this account.' %}</p>
+                        {% endif %}
+                    </div>
+
+                    <h2 class="title">{% trans 'Add a 3rd Party Account' %}</h2>
+
+                    <ul class="socialaccount_providers">
+                        {% include "socialaccount/snippets/provider_list.html" with process="connect" %}
+                    </ul>
+
+                    {% include "socialaccount/snippets/login_extra.html" %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

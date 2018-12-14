@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load recaptcha2 %}
+
+{% block title %} {{ request.META.HTTP_REFERER }} - Report {% endblock %}
+
+{% block js_header %}
+    {% recaptcha_init 'tr' %}
+{% endblock js_header %}
+
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <div class="content">
+                        <h2 class="title">{% trans "Kötüye Kullanımı Bildir" %}</h2>
+                        <br>
+                        <p class="subtitle">{% trans "Platformumuz herkes için güvenli olmalı, bu yüzden yapistir_io'da istismar ve tacizleri ciddiye alıyoruz." %}</p>
+                        <p>{% trans "Sitede" %} <a href="{% url 'terms_of_service' %}"> hizmet
+                            şartları’nı</a> {% trans "ihlal eden zararlı davranışları tespit etmek istiyoruz. İlgilendiğiniz kullanıcının içeriğini bize bildirin." %}
+                        </p>
+                        <h3 class="title">{% trans "Kötüye Kullanım Bildirirken" %}</h3>
+                        <ul>
+                            <li> {% trans "Temiz ve anlaşılır bir dil kullanın" %}</li>
+                            <li> {% trans "Geçerli sebepler sunun" %} </li>
+                            <li> {% trans "Mümkünse görseller ile destekleyin" %} </li>
+                            <li> {% trans "Sabırlı olun" %} </li>
+                        </ul>
+                        <p>{% trans "Kötüye kullanım bildirdiğiniz andan itibaren, 24-48 saat içerisinde mail adresinize gerekli geri dönüş sağlanacaktır." %}</p>
+                        <article class="message is-danger">
+                            <div class="message-header">
+                                <p> {% trans "DİKKAT" %} </p>
+                            </div>
+                            <div class="message-body">
+                                {% trans "Bilgilerinizi gizli tutacağımızdan emin olabilirsiniz" %}
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="column is-two-thirds">
+                    <div class="field">
+                        <div class="level">
+                            <div class="level-left">
+                            </div>
+                            <div class="level-right">
+                                <a class="button is-info is-outlined"
+                                   href="{{ request.META.HTTP_REFERER }}"><i class="fas fa-arrow-left"></i>&nbsp;Geri Dön
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <form action="{% url 'paste_report_view' %}" method="POST">
+                            {% csrf_token %}
+                            {% if user.is_authenticated %}
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="label">Mail adresiniz:</label>
+                                        <input type="email" class="input" name="mail"
+                                               value="{{ request.user.email }}"
+                                               readonly>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="label">Mail adresiniz:</label>
+                                        {{ form.mail }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="field">
+                                <div class="control">
+                                    <label class="label">Kötüye kullanım bildirilecek bağlantı:</label>
+                                    <input type="text" class="input" name="slugs_id"
+                                           value="{{ request.META.HTTP_REFERER }}"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <label class="label">Kötüye kullanım alt nedeni:</label>
+                                    <div class="select is-fullwidth">
+                                        {{ form.reason }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Açıklama:</label>
+                                <div id="textarea_feedback"></div>
+                                <div class="control">
+                                    {{ form.rapor_nedeni }}
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    {{ form.captcha }}
+                                </div>
+                            </div>
+                            <button type="submit"
+                                    class="button is-block is-info is-large is-fullwidth">{% trans "Kötüye Kullanım Bildir" %}
+                            </button>
+                        </form>
+                        {% for message in messages %}
+                            <div class="is-fullwidth">
+                                <div class="column">
+                                    <div class="notification {% if message.tags %} is-{{ message.tags }}{% endif %}">
+                                        <button class="delete"></button>
+                                        {{ message|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block js_code %}
+    <script>
+        $(document).ready(function () {
+            let text_max = 40;
+            $('#textarea_feedback').html('Minimum ' + text_max + ' karakter');
+
+            $('#id_rapor_nedeni').keyup(function () {
+                let text_length = $('#id_rapor_nedeni').val().length;
+                let text_remaining = text_max - text_length;
+
+                $('#textarea_feedback').html('Minimum ' + text_remaining + ' karakter');
+            });
+        });
+    </script>
+{% endblock js_code %}

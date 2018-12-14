@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load widget_tweaks %}
+{% load recaptcha2 %}
+
+{% block title %} Yeni Kullanıcı Kaydı - Yapistir.io!{% endblock title %}
+
+{% block js_header %}
+    <link rel="stylesheet" type="text/css" href="{% static "assets/css/login.css" %}">
+    {% recaptcha_init 'tr' %}
+{% endblock js_header %}
+
+{% block content %}
+    <section class="is-success is-fullheight">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h3 class="title">Yeni Kullanıcı Kaydı</h3>
+                    <p class="subtitle">Lütfen bilgilerinizi eksiksiz giriniz.</p>
+                    <div class="box">
+                        <form action="." method="POST">
+                            {% csrf_token %}
+                            <div class="field">
+                                <label class="label">Kullanıcı adınız:</label>
+                                <div class="control">
+                                    {% render_field form.username class+="input " placeholder="Kullanıcı Adı" %}
+                                    <p class="help">150 karakter ya da daha az olmalı. Sadece harfler, rakamlar ve
+                                        <strong>@/./+/-/_</strong>
+                                        karakterleri kullanılabilir.</p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">E-Posta adresiniz:</label>
+                                <div class="control">
+                                    {% render_field form.email type="email" class+="input " placeholder="E-Posta Adresi" %}
+                                    <p class="help">Geçerli bir <b>e-posta adresi</b> bildirin.</p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Parolanız:</label>
+                                <div class="control">
+                                    {% render_field form.password1 type="password" class+="input " placeholder="Parola" %}
+                                    <p class="help">Parolanız diğer kişisel bilgileriniz ile çok benzer olamaz.</p>
+                                    <p class="help">Parolanız <strong>en az 8 karakter</strong> içermek zorunda.</p>
+                                    <p class="help">Parolanız genellikle kullanılan bir parola olamaz.</p>
+                                    <p class="help">Parolanız tamamıyla sayısal olamaz.</p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Parola tekrarı:</label>
+                                <div class="control">
+                                    {% render_field form.password2 type="password" class+="input " placeholder="Parola Tekrarı" %}
+                                    <p class="help">{{ form.password2.help_text|safe }}</p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <p class="help">Lütfen <b>robot</b> olmadığınızı doğrulayın.</p>
+                                    {{ form.captcha }}
+                                </div>
+                            </div>
+                            <p>Kayıt olarak <a href=" {% url 'terms_of_service' %} "><b>Hizmet Şartlarını</b></a>, <a
+                                    href="{% url 'privacy' %}"><b>Gizlilik Politikasını</b></a> okuduğunuzu ve kabul
+                                ettiğinizi onaylıyorsunuz.</p>
+                            <button type="submit" class="button is-block is-info is-large is-fullwidth">Kayıt ol
+                            </button>
+                        </form>
+                    </div>
+                    {% include "include/__errors.html" %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
